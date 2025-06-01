@@ -22,20 +22,20 @@ pub use command_buffer::{CommandBuffer, ComputePass, CopyPass, Fence, RenderPass
 
 mod enums;
 pub use enums::{
-    BlendFactor, BlendOp, BufferUsageFlags, ColorComponentFlags, CompareOp, CullMode, FillMode,
-    Filter, FrontFace, IndexElementSize, LoadOp, PrimitiveType, SampleCount, SamplerAddressMode,
+    BlendFactor, BlendOp, BufferUsage, ColorComponentFlags, CompareOp, CullMode, FillMode, Filter,
+    FrontFace, IndexElementSize, LoadOp, PrimitiveType, SampleCount, SamplerAddressMode,
     SamplerMipmapMode, ShaderFormat, ShaderStage, StencilOp, StoreOp, TextureFormat, TextureType,
     TextureUsage, TransferBufferUsage, VertexElementFormat, VertexInputRate,
 };
 
 mod info_struct;
 pub use info_struct::{
-    BufferBinding, BufferRegion, ColorTargetBlendState, ColorTargetDescription, ColorTargetInfo,
-    DepthStencilState, DepthStencilTargetInfo, GraphicsPipelineTargetInfo, RasterizerState,
-    SamplerCreateInfo, StencilOpState, StorageBufferReadWriteBinding,
-    StorageTextureReadWriteBinding, TextureCreateInfo, TextureRegion, TextureSamplerBinding,
-    TextureTransferInfo, TransferBufferLocation, VertexAttribute, VertexBufferDescription,
-    VertexInputState,
+    BufferBinding, BufferLocation, BufferRegion, ColorTargetBlendState, ColorTargetDescription,
+    ColorTargetInfo, DepthStencilState, DepthStencilTargetInfo, GraphicsPipelineTargetInfo,
+    IndirectDispatchCommand, RasterizerState, SamplerCreateInfo, StencilOpState,
+    StorageBufferReadWriteBinding, StorageTextureReadWriteBinding, TextureCreateInfo,
+    TextureLocation, TextureRegion, TextureSamplerBinding, TextureTransferInfo,
+    TransferBufferLocation, VertexAttribute, VertexBufferDescription, VertexInputState,
 };
 
 use sys::gpu::{

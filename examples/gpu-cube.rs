@@ -1,13 +1,13 @@
 use sdl3::{
     event::Event,
     gpu::{
-        Buffer, BufferBinding, BufferRegion, BufferUsageFlags, ColorTargetDescription,
-        ColorTargetInfo, CompareOp, CopyPass, CullMode, DepthStencilState, DepthStencilTargetInfo,
-        FillMode, GraphicsPipelineTargetInfo, IndexElementSize, LoadOp, Owned, OwnedDevice,
-        PrimitiveType, RasterizerState, SampleCount, ShaderFormat, ShaderStage, StoreOp,
-        TextureCreateInfo, TextureFormat, TextureType, TextureUsage, TransferBuffer,
-        TransferBufferLocation, TransferBufferUsage, VertexAttribute, VertexBufferDescription,
-        VertexElementFormat, VertexInputRate, VertexInputState,
+        Buffer, BufferBinding, BufferUsage, ColorTargetDescription, ColorTargetInfo, CompareOp,
+        CopyPass, CullMode, DepthStencilState, DepthStencilTargetInfo, FillMode,
+        GraphicsPipelineTargetInfo, IndexElementSize, LoadOp, Owned, OwnedDevice, PrimitiveType,
+        RasterizerState, SampleCount, ShaderFormat, ShaderStage, StoreOp, TextureCreateInfo,
+        TextureFormat, TextureType, TextureUsage, TransferBuffer, TransferBufferUsage,
+        VertexAttribute, VertexBufferDescription, VertexElementFormat, VertexInputRate,
+        VertexInputState,
     },
     keyboard::Keycode,
     pixels::Color,
@@ -129,8 +129,7 @@ pub fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .with_vertex_buffer_descriptions(&[VertexBufferDescription::new()
                     .with_slot(0)
                     .with_pitch(size_of::<VertexPosition>() as u32)
-                    .with_input_rate(VertexInputRate::Vertex)
-                    .with_instance_step_rate(0)])
+                    .with_input_rate(VertexInputRate::Vertex)])
                 .with_vertex_attributes(&[VertexAttribute::new()
                     .with_format(VertexElementFormat::Float3)
                     .with_location(0)
@@ -182,7 +181,7 @@ pub fn main() -> Result<(), Box<dyn std::error::Error>> {
             &gpu,
             &mut transfer_buffer,
             &copy_pass,
-            BufferUsageFlags::VERTEX,
+            BufferUsage::VERTEX,
             &CUBE_VERTICES,
         )
         .unwrap();
@@ -190,7 +189,7 @@ pub fn main() -> Result<(), Box<dyn std::error::Error>> {
             &gpu,
             &mut transfer_buffer,
             &copy_pass,
-            BufferUsageFlags::INDEX,
+            BufferUsage::INDEX,
             &CUBE_INDICES,
         )
         .unwrap();
@@ -293,7 +292,7 @@ fn create_buffer_with_data<'gpu, T: Copy>(
     gpu: &'gpu OwnedDevice,
     transfer_buffer: &mut Owned<'_, TransferBuffer>,
     copy_pass: &CopyPass,
-    usage: BufferUsageFlags,
+    usage: BufferUsage,
     data: &[T],
 ) -> Result<Owned<'gpu, Buffer>, Error> {
     // Figure out the length of the data in bytes
